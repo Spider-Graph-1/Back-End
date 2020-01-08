@@ -3,6 +3,9 @@ const router = express.Router();
 
 const Users = require('./users-model.js');
 
+// Import Middleware
+const validateUser = require('./users-middleware.js');
+
 router.get('/:id', (req, res) => {
     const {id} = req.params;
 
