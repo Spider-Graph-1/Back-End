@@ -197,7 +197,6 @@ Sample response:
 
 - Need direction on `/api/graphs` endpoint: I wanted to keep my users and graphs endpoints separate, because it seemed like bad practice to mix routers/models. My intention was to have the `/graphs/:id` endpoint return all of the graphs for the user with that id. I set the graphs table up to have the `user_id` as a foreign key, and I wrote the helper function to try and query the database to match the `user_id` with the id that is pulled out of the params. But it doesn't return all of the graphs. As a test I added two different graphs with the `user_id` of 1. When I tried to access `/api/graphs/1`, only one graph was returned to me from the database.
 
-- Database isn't returning the `user_id` on request. I'm using Postgres and Heroku. I wrote all of the code to add a new user, and it should return the new user object, the authentication token, and the user_id after it gets entered into the database, but according to the React devs, it is not returning the user_id. It works for me on Postman. But I can't seem to figure out what the problem is.
 
 ### TO DO
 
