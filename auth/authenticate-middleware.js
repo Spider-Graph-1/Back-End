@@ -4,7 +4,7 @@ const secrets = require('../config/secrets.js');
 
 module.exports = (req, res, next) => {
     
-  const token = req.headers.authorization.split(' ')[1];
+  const token = req.headers.authorization;
 
   if (req.decodedJwt) { // will check for a token that is already authorized.
     next();
