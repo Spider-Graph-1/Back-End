@@ -6,7 +6,7 @@ const Users = require('./users-model.js');
 // Import Middleware
 const validateUser = require('./users-middleware.js');
 
-router.get('/:id', validateUser, (req, res) => {
+router.get('/:id', (req, res) => {
     const {id} = req.params;
 
     Users.findById(id)
@@ -18,7 +18,7 @@ router.get('/:id', validateUser, (req, res) => {
         })
 })
 
-router.put('/:id', validateUser, (req, res) => {
+router.put('/:id', (req, res) => {
     const updatedUser = req.body;
 
     Users.updateUser(req.params.id, updatedUser)
@@ -30,7 +30,7 @@ router.put('/:id', validateUser, (req, res) => {
         })
 })
 
-router.delete('/:id', validateUser, (req, res) => {
+router.delete('/:id', (req, res) => {
     Users.deleteUser(req.params.id)
         .then((deletedUser) => {
             if(deletedUser) {

@@ -2,11 +2,10 @@ const Users = require('./users-model.js');
 
 module.exports = (req, res, next) => {
     const {id} = req.params;
-    console.log(id);
+    
     if(id && (id !== undefined)) {
         Users.findById(id)
             .then((response) => {
-                console.log(response);
                 if (response && response.length) {
                     next();
                 } else {
