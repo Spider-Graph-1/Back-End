@@ -19,6 +19,10 @@ async function getAllUserGraphs(id) {
         .where({ user_id: id });
 }
 
+function getAllGraphs() {
+    return db('graphs');
+}
+
 async function updateGraph(id, changes) {
     await db('graphs')
         .where({ id })
@@ -42,5 +46,6 @@ module.exports = {
     findById,
     getAllUserGraphs,
     updateGraph,
-    deleteGraph
+    deleteGraph,
+    getAllGraphs
 }

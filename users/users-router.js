@@ -6,19 +6,19 @@ const Users = require('./users-model.js');
 // Import Middleware
 const validateUser = require('./users-middleware.js');
 
-router.get('/:id', (req, res) => {
+router.get('/:id', validateUser, (req, res) => {
     const {id} = req.params;
 
     Users.findById(id)
         .then((user) => {
-            res.status(200).json(user, user.id);
+            res.status(200).json(user);
         })
         .catch(() => {
             res.status(500).json({ message: 'There was an error retrieving the user from the database.'})
         })
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', validateUser, (req, res) => {
     const updatedUser = req.body;
 
     Users.updateUser(req.params.id, updatedUser)
@@ -30,7 +30,7 @@ router.put('/:id', (req, res) => {
         })
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', validateUser, (req, res) => {
     Users.deleteUser(req.params.id)
         .then((deletedUser) => {
             if(deletedUser) {

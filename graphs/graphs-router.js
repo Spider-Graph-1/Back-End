@@ -16,9 +16,8 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    const {id} = req.params;
 
-    Graphs.getAllUserGraphs(id)
+    Graphs.getAllGraphs()
         .then((graphs) => {
             res.status(200).json(graphs)
         })

@@ -193,15 +193,11 @@ Sample response:
 
 ### Current Issues
 
-- validateUser middleware is not working. Initially I had the middleware in server.js. That was throwing an error because the `id` was always undefined. After asking for help in WEBPT7 help channel, I moved the middleware to the router, and tried to implement it on all of the routes that included `/:id`, but now the request hangs and does not resolve.
-
-- Need direction on `/api/graphs` endpoint: I wanted to keep my users and graphs endpoints separate, because it seemed like bad practice to mix routers/models. My intention was to have the `/graphs/:id` endpoint return all of the graphs for the user with that id. I set the graphs table up to have the `user_id` as a foreign key, and I wrote the helper function to try and query the database to match the `user_id` with the id that is pulled out of the params. But it doesn't return all of the graphs. As a test I added two different graphs with the `user_id` of 1. When I tried to access `/api/graphs/1`, only one graph was returned to me from the database.
-
 
 ### TO DO
 
 - [x] - Create CRUD endpoints for Users
-- [ ] - Write middleware for Users endpoints (validate user id, etc.)
+- [x] - Write middleware for Users endpoints (validate user id, etc.)
 - [x] - Add tables for handling graph data
 - [x] - Write endpoints for graphs
 - [x] - Wire up authentication middleware
